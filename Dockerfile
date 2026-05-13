@@ -1,10 +1,20 @@
-FROM nginx:alpine
+# Use the official Node.js image
+FROM node:18-alpine
 
-# Copy the Markdown files to the nginx web directory
-COPY obchodni-podminky.md /usr/share/nginx/html/
-COPY zasady-ochrany-osobnich-udaju.md /usr/share/nginx/html/
+# Create app directory
+WORKDIR /usr/src/app
 
-# Copy a custom nginx configuration to enable directory listing
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Copy package.json and package-lock.json
+COPY package*.json ./
 
-EXPOSE 80
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the application
+COPY . .
+
+# Expose the port the app runs on
+EXPOSE 3000
+
+# Command to run the application
+CMD ["npm", "start"]

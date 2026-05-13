@@ -1,0 +1,14 @@
+{
+  "name": "barf-website",
+  "version": "1.0.0",
+  "description": "Serve markdown files as HTML",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "marked": "^4.3.0",
+    "fs": "^0.0.1-security"
+  }
+}
